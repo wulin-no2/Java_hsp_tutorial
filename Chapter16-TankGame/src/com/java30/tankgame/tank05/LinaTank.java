@@ -20,7 +20,7 @@ public class LinaTank extends Tank {
 
     public void shotBadTank(){
         //control the number of bullets:
-        if (linaShots.size() == 5) {
+        if (linaShots.size() >= 5) {
             return;
         }
             switch (getDirect()) {

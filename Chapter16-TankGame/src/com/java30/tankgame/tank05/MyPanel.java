@@ -11,7 +11,7 @@ public class MyPanel extends JPanel implements KeyListener,Runnable {
     //create a vector to collect badtanks:
     Vector<BadTank> badTanks =new Vector<>();
     int badTanksSize = 3;
-    //Create a vetor to collect bomb,if hit a tank,then initialize a bomb:
+    //Create a vector to collect bomb,if hit a tank,then initialize a bomb:
     Vector<Bomb> bombs = new Vector<>();
     //define 3 images to present bombs:
     Image image1 = null;
