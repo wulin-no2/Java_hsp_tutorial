@@ -1,17 +1,14 @@
 package exercise20231221.socket;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 /**
  * @author wulin
  * client, sent"hello, server" to server.
  */
-public class SocketTCP01Client {
+public class SocketTCP03Client {
     public static void main(String[] args) throws IOException {
         // analyze:
         // 1) connect server(IP, port)
@@ -21,19 +18,26 @@ public class SocketTCP01Client {
         // via socket.getOutputStream()
         OutputStream outputStream = socket.getOutputStream();
         // write date to stream.
-        outputStream.write("hello, server".getBytes());
-        // end tag
-        socket.shutdownOutput();
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+        bufferedWriter.write("hello,server by[char stream client]");
+        // insert newLine() means the content ends.
+        bufferedWriter.newLine();
+        // refresh the char stream, then it can be written.
+        bufferedWriter.flush();
+        // we don't need end tag here, because we have newLine()
+        //socket.shutdownOutput();
         // get message from server:
         InputStream inputStream = socket.getInputStream();
-        byte[] buf = new byte[1024];
-        int readLen = 0;
-        while ((readLen = inputStream.read(buf))!= -1){
-            System.out.println(new String(buf,0,readLen));
-        }
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = bufferedReader.readLine();
+        System.out.println(line);
+
         // close:
+        bufferedReader.close();
+        bufferedWriter.close();
         inputStream.close();
         outputStream.close();
         socket.close();
+        System.out.println("client exits.");
     }
 }

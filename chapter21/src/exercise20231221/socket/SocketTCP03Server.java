@@ -1,15 +1,13 @@
 package exercise20231221.socket;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.security.Provider;
+
 /**
  * @author wulin
  * @version 1.0
  */
-public class SocketTCP01Server {
+public class SocketTCP03Server {
     public static void main(String[] args) throws IOException {
         // Analyze:
         // 1) 9999 waiting for connection.
@@ -23,23 +21,27 @@ public class SocketTCP01Server {
         // 3) get content from socket.getInputStream()
         // from what client has written into the data stream;
         InputStream inputStream = socket.getInputStream();
-        // IO read:
-        byte[] buf = new byte[1024];
-        int readLen = 0;
-        while ((readLen = inputStream.read(buf))!= -1){
-            // show the content according to real length.
-            System.out.println(new String(buf,0, readLen));
-        }
+        // IO read, char stream:
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = bufferedReader.readLine();
+        System.out.println(line);
         // sent message:
         OutputStream outputStream = socket.getOutputStream();
-        outputStream.write("hello, client".getBytes());
-        // end tag
-        socket.shutdownOutput();
+        // use char stream:
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+        bufferedWriter.write("hello, client by[char stream server]");
+        bufferedWriter.newLine();
+        bufferedWriter.flush();
+        // end tag no use:
+        //socket.shutdownOutput();
         // close:
+        bufferedReader.close();
+        bufferedWriter.close();
         inputStream.close();
         outputStream.close();
         socket.close();
         serverSocket.close();
+        System.out.println("server exits.");
 
     }
 }
