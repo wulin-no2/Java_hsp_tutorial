@@ -22,13 +22,14 @@ public class TCPFileUploadServer {
         BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
         byte[] buff = new byte[1024];
         int readLen = 0;
-        // store the image into what type of data?
+        // store the image into what type of data? byteArray
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         while ((readLen = bufferedInputStream.read(buff)) != -1){
             byteArrayOutputStream.write(buff,0,readLen);
         }
         byte[] byteArray = byteArrayOutputStream.toByteArray();
         System.out.println("get image from client..");
+
         // store image into a file:
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream("imageCopy.png"));
         bufferedOutputStream.write(byteArray);
