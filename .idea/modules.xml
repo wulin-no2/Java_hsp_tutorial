@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Chapter07/Chapter07.iml" filepath="$PROJECT_DIR$/Chapter07/Chapter07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Chapter16-TankGame/Chapter16-TankGame.iml" filepath="$PROJECT_DIR$/Chapter16-TankGame/Chapter16-TankGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java_hsp_tutorial.iml" filepath="$PROJECT_DIR$/Java_hsp_tutorial.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter22_QQ/QQclient/QQclient.iml" filepath="$PROJECT_DIR$/chapter22_QQ/QQclient/QQclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter22_QQ/QQserver/QQserver.iml" filepath="$PROJECT_DIR$/chapter22_QQ/QQserver/QQserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter21/chapter21.iml" filepath="$PROJECT_DIR$/chapter21/chapter21.iml" />
+    </modules>
+  </component>
+</project>
